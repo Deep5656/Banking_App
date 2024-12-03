@@ -18,4 +18,14 @@ spring:
 server:
     port: 8080
 
+build:
+  version: "1.0"
 
+accounts:
+  message: "welcome to Accounts Microservice"
+  contactDetails:
+    name: "Deepanshu"
+    email: "deepanshu123@gmail.com"
+  onCallSupport:
+    -1234567890
+    -9876543210
