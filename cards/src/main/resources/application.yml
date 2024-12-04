@@ -15,3 +15,22 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+  profiles:
+    active:
+      - "qa"
+
+build:
+  version: "1.0"
+
+cards:
+ message: "welcome to loans microservice"
+ cardsContactDetails:
+   name: "Deepanshu"
+   email: "deepanshu@gmail.com"
+ onCallSupport:
+   - "1234567890"
+   - "9876543210"

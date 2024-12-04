@@ -4,6 +4,7 @@ import com.eazybytes.loans.constants.LoansConstants;
 import com.eazybytes.loans.dto.ErrorResponseDto;
 import com.eazybytes.loans.dto.LoansDto;
 import com.eazybytes.loans.dto.ResponseDto;
+import com.eazybytes.loans.dto.LoansContactInfoDto;
 import com.eazybytes.loans.service.impl.LoansServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,6 +15,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +34,17 @@ import org.springframework.web.bind.annotation.*;
 )
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
-@AllArgsConstructor
 @Validated
+@EnableConfigurationProperties(value={LoansContactInfoDto.class})
 public class LoansController {
 
+    @Autowired
     private LoansServiceImpl iLoansService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+    @Autowired
+    private LoansContactInfoDto loansContactInfoDto;
 
     @Operation(
             summary = "Create Loan REST API",
@@ -162,6 +172,19 @@ public class LoansController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @GetMapping("/buildVersion")
+    public ResponseEntity<String>getBuildVersion(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+    @GetMapping("/loansContactInfo")
+    public ResponseEntity<LoansContactInfoDto> getLoansContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
     }
 
 }

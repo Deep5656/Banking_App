@@ -15,14 +15,21 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  config:
+    activate:
+      on-profile: "prod"
+
+
 server:
     port: 8081
 
+
+
 build:
-  version: "3.0"
+  version: "1.0"
 
 accounts:
-  message: "welcome to Accounts Microservice"
+  message: "welcome to Accounts prod Microservice"
   contactDetails:
     name: "Deepanshu"
     email: "deepanshu123@gmail.com"
