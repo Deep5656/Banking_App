@@ -9,15 +9,16 @@ import com.eazybytes.cards.mapper.CardsMapper;
 import com.eazybytes.cards.repository.CardsRepository;
 import com.eazybytes.cards.service.ICardsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
 
 @Service
-@AllArgsConstructor
 public class CardsServiceImpl implements ICardsService {
 
+    @Autowired
     private CardsRepository cardsRepository;
 
     /**

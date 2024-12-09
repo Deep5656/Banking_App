@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.*;
 @EnableConfigurationProperties(value = {AccountsContactInfoDto.class})
 public class AccountsController {
 
-    private IAccountsService accountsService;
+    private final IAccountsService accountsService;
 
     @Autowired
     private Environment environment;
@@ -40,6 +40,7 @@ public class AccountsController {
     @Autowired
     private AccountsContactInfoDto accountsContactInfoDto;
 
+    @Autowired
     public AccountsController(IAccountsService iAccountsService){
         this.accountsService = iAccountsService;
     }

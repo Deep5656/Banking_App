@@ -38,8 +38,13 @@ import org.springframework.web.bind.annotation.*;
 @EnableConfigurationProperties(value={LoansContactInfoDto.class})
 public class LoansController {
 
+
+    private final LoansServiceImpl iLoansService;
+
     @Autowired
-    private LoansServiceImpl iLoansService;
+    public LoansController(LoansServiceImpl iLoansService) {
+        this.iLoansService = iLoansService;
+    }
 
     @Value("${build.version}")
     private String buildVersion;

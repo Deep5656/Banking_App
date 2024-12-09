@@ -1,0 +1,12 @@
+
+build:
+  version: "1.0"
+
+cards:
+ message: "welcome to cards microservice"
+ cardsContactDetails:
+   name: "Deepanshu"
+   email: "deepanshu@gmail.com"
+ onCallSupport:
+   - "1234567890"
+   - "9876543210"

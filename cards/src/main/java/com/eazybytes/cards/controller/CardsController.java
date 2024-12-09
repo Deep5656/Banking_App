@@ -38,14 +38,17 @@ import org.springframework.web.bind.annotation.*;
 @EnableConfigurationProperties(value={CardsContactInfoDto.class})
 public class CardsController {
 
-    @Autowired
-    private ICardsService iCardsService;
+    private final ICardsService iCardsService;
 
+    @Autowired
+    public CardsController(ICardsService iCardsService) {
+        this.iCardsService = iCardsService;
+    }
     @Autowired
     private CardsContactInfoDto cardsContactInfoDto;
 
     @Value("${build.version}")
-    private String buildVersion;
+    public String buildVersion;
 
     @Operation(
             summary = "Create Card REST API",

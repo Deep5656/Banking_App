@@ -1,0 +1,12 @@
+
+build:
+  version: "8.9"
+
+loans:
+  message: "welcome to loans prod microservice"
+  loansContactDetails:
+    name: "Deepanshu"
+    email: "deepanshu@gmail.com"
+  onCallSupport:
+    - "1234567890"
+    - "1234567891"

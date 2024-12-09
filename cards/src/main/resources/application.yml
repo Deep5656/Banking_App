@@ -1,7 +1,12 @@
 
 server:
   port: 8082
+
 spring:
+  application:
+    name: cards
+  profiles:
+    active: prod
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -16,21 +21,11 @@ spring:
       ddl-auto: update
     show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "qa"
+    import: "optional:configserver:http://localhost:8071/"
 
-build:
-  version: "1.0"
 
-cards:
- message: "welcome to loans microservice"
- cardsContactDetails:
-   name: "Deepanshu"
-   email: "deepanshu@gmail.com"
- onCallSupport:
-   - "1234567890"
-   - "9876543210"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

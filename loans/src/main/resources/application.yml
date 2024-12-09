@@ -1,6 +1,11 @@
 server:
   port: 8083
+
 spring:
+  application:
+    name: loans
+  profiles:
+    active: prod
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -15,21 +20,13 @@ spring:
       ddl-auto: update
     show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "qa"
+    import: "optional:configserver:http://localhost:8071/"
 
-build:
-  version: "8.8"
 
-loans:
-  message: "welcome to loans microservice"
-  loansContactDetails:
-    name: "Deepanshu"
-    email: "deepanshu@gmail.com"
-  onCallSupport:
-    - "1234567890"
-    - "1234567891"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
