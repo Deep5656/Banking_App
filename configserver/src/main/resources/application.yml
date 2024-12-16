@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: configserver
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"  
   profiles:
 #    active:
      active: git
@@ -14,7 +19,7 @@ spring:
 #          search-locations: "classpath:/config"
         git:
           uri: https://github.com/Deep5656/eazybytes-config.git
-          default-label: main
+          default-label: master
           timeout: 5
           clone-on-start: true
           force-pull: true
